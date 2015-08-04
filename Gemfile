@@ -35,6 +35,9 @@ gem 'puma'
 # Google places gem
 gem 'google_places', '~> 0.32.0'
 
+# Geocoder gem
+gem 'geocoder', '~> 1.2.9'
+
 # phone gem for phone numbers normalizations
 gem 'phone', '~> 1.2.3'
 
