@@ -1,0 +1,1 @@
+APP_BOX = YAML::load_file(Rails.root.join('config', 'app_box.yml'))
