@@ -87,7 +87,7 @@ table td {
 
 .stars, .stars0
 {
-  background: transparent url("stars.png") no-repeat top left;
+  background: transparent asset-path("stars.png") no-repeat top left;
   width:100px;
   height:20px;
   float:left;
