@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
 
   def scanner
-    if params[:business]
+    # make sure any value exists for search
+    if !params["business"].values.reject(&:empty?).count.zero?
       @business = Business.new(business_params) 
       @business.normalize_phone
 
