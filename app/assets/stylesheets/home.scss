@@ -7,12 +7,14 @@ html {
 
 body {
   height:100%;
-  background:rgb(59, 145, 145);
+  background: #C7CACA;
 }
 
 table {
   border: 1px solid;
   border-radius: 5px;
+  width: 75% !important;
+  margin-bottom: 30px;
 }
 
 table thead {
@@ -23,7 +25,7 @@ table th {
   padding:5px;
 }
 
-table th td {
+table td {
   padding:10px;
 }
 
@@ -36,12 +38,12 @@ table th td {
 
 .fieldset p {
   font-size:55px;
-  color:#ECD748;
+  color:#302A2B;
   margin: 45px 0;
 }
 
 .field-section label {
-  color:#fff;
+  color:#302A2B;
   font-size:20px;
   margin-top:5px;
 }
@@ -81,4 +83,36 @@ table th td {
 
 .error {
   color: red;
+}
+
+.stars, .stars0
+{
+  background: transparent url("stars.png") no-repeat top left;
+  width:100px;
+  height:20px;
+  float:left;
+  display:block;
+  margin-right: 5px;
+  margin-top: -2px;
+}
+.stars1 {background-position:-20px;}
+.stars2 {background-position:-40px;}
+.stars3 {background-position:-60px;}
+.stars4 {background-position:-80px;}
+.stars5 {background-position:-100px;}
+
+.reviewer_name {
+  font-weight: bold;
+}
+
+.wrapper{
+  margin-left: 50px;
+}
+
+.reviews{
+  margin-top: 30px;
+}
+
+.reviews .row{
+  margin-bottom: 23px;
 }

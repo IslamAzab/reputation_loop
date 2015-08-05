@@ -3,7 +3,7 @@
 
 .fieldset
   = form_tag root_path do
-    %p.text-center Search for your place
+    %p.text-center Search for a business
     .row.field-section
       = label_tag :name, nil,class: "col-sm-2"
       = text_field_tag "business[name]", nil,class: "header-input col-sm-9"
@@ -27,75 +27,69 @@
         %span
           = submit_tag :submit
 
-- if @place && @comparison_result
-  / = params["business"]
-  / %br
-  / = params["business"].values.join(' ')
-  %table.col-sm-12 
-    %thead
-      %tr
-        %th Field name 
-        %th Does it match 
-    %tbody 
-      %tr
-        %td Name
-        - if @comparison_result[:name]
-          - class_name = "success"
-        - else
-          - class_name = "error"
-        %td{class: class_name}= @place.name
+.wrapper
+  - if @place && @comparison_result
 
-      %tr
-        %td Address
-        - if @comparison_result[:address]
-          - class_name = "success"
-        - else
-          - class_name = "error"
-        
-        %td{class: class_name}= @place.formatted_address
+    .table-wrapper
+      %table.col-sm-12
+        %thead
+          %tr
+            %th Field name
+            %th Does it match
+        %tbody
+          %tr
+            %td Name
+            - if @comparison_result[:name]
+              - class_name = "success"
+            - else
+              - class_name = "error"
+            %td{class: class_name}= @place.name
 
-        / %td= @place.formatted_address
-        
-        / - result = "street_number: #{@comparison_result[:street_number]} - street address: #{@comparison_result[:street_address]} "
+          %tr
+            %td Address
+            - if @comparison_result[:address]
+              - class_name = "success"
+            - else
+              - class_name = "error"
 
-        / %td= result
-      %tr 
-        %td City
-        - if @comparison_result[:city]
-          - class_name = "success"
-        - else
-          - class_name = "error"
-        
-        %td{class: class_name}= @place.city
-   
-      %tr
-        %td State
-        - if @comparison_result[:state]
-          - class_name = "success"
-        - else
-          - class_name = "error"
-        
-        %td{class: class_name}= @place.region
-     
-      %tr
-        %td Postal Code
-        - if @comparison_result[:postal_code]
-          - class_name = "success"
-        - else
-          - class_name = "error"
-        
-        %td{class: class_name}= @place.postal_code
-  
-      %tr
-        %td Phone
-        - if @comparison_result[:phone]
-          - class_name = "success"
-        - else
-          - class_name = "error"
-        
-        %td{class: class_name}= @place.formatted_phone_number
-   
+            %td{class: class_name}= @place.formatted_address
 
-  .div.reviews
-    - @place.reviews.each do |review|
-      = render "review", review: review
+          %tr 
+            %td City
+            - if @comparison_result[:city]
+              - class_name = "success"
+            - else
+              - class_name = "error"
+
+            %td{class: class_name}= @place.city
+
+          %tr
+            %td State
+            - if @comparison_result[:state]
+              - class_name = "success"
+            - else
+              - class_name = "error"
+            
+            %td{class: class_name}= @place.region
+
+          %tr
+            %td Postal Code
+            - if @comparison_result[:postal_code]
+              - class_name = "success"
+            - else
+              - class_name = "error"
+
+            %td{class: class_name}= @place.postal_code
+
+          %tr
+            %td Phone
+            - if @comparison_result[:phone]
+              - class_name = "success"
+            - else
+              - class_name = "error"
+            
+            %td{class: class_name}= @place.formatted_phone_number
+
+    .reviews
+      - @place.reviews.each do |review|
+        = render "review", review: review

@@ -1,8 +1,9 @@
 .row
   .col-lg-12
-    .p
+    .reviewer_name
       = review.author_name
-    .p
-      = review.rating
-    .p
+    .div
+      = time_ago_in_words(DateTime.strptime(review.time.to_s,'%s'))
+    .div.stars.stars0{class: "stars#{review.rating.to_i}"}
+    .div
       = review.text
