@@ -44,6 +44,8 @@ gem 'phone', '~> 1.2.3'
 # convert erb to haml
 gem 'haml-rails', '~> 0.9.0'
 
+gem "twitter-bootstrap-rails"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

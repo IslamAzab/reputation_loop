@@ -1,3 +1,76 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+html {
+  height:100%;
+}
+
+body {
+  height:100%;
+  background:rgb(59, 145, 145);
+}
+
+table {
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+table thead {
+  background-color: gray;
+}
+
+table th {
+  padding:5px;
+}
+
+table th td {
+  padding:10px;
+}
+
+.fieldset {
+  padding: 15px;
+  width:60%;
+  float: none;
+  margin: 0 auto;
+}
+
+.fieldset p {
+  font-size:55px;
+  color:#ECD748;
+  margin: 45px 0;
+}
+
+.field-section label {
+  color:#fff;
+  font-size:20px;
+  margin-top:5px;
+}
+
+.field-section span {
+  float:none;
+  margin: 0 auto
+}
+
+.field-section {
+  padding: 15px 0;
+}
+
+.field-section span input {
+  float: right;
+  padding: 5px 25px;
+  border-radius: 5px;
+  background-color: rgb(236, 215, 72);
+  border: 1px solid rgb(189, 172, 57);
+}
+
+.field-section span input:hover {
+  background-color: #F9E563;
+}
+
+
+.header-input {
+  padding: 10px 10px;
+  margin-right: 25px;
+  border-radius: 5px;
+  border: 1px solid rgb(200, 200, 172);
+}

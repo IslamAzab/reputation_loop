@@ -1,25 +1,36 @@
+/ - if @place && @comparison_result
+/   - class_name = "small_form"
+
 .fieldset
   = form_tag root_path do
-    = label_tag :name
-    = text_field_tag "business[name]"
-    = label_tag :address
-    = text_field_tag "business[address]"
-    = label_tag :city
-    = text_field_tag "business[city]"
-    = label_tag :state
-    = text_field_tag "business[state]"
-    = label_tag :zip
-    = text_field_tag "business[zip]"
-    = label_tag :phone
-    = text_field_tag "business[phone]"
-
-    %p
-      = submit_tag :submit
+    %p.text-center Search for your place
+    .row.field-section
+      = label_tag :name, nil,class: "col-sm-2"
+      = text_field_tag "business[name]", nil,class: "header-input col-sm-9"
+    .row.field-section  
+      = label_tag :address, nil,class: "col-sm-2"
+      = text_field_tag "business[address]", nil,class: "header-input col-sm-9"
+    .row.field-section
+      = label_tag :city, nil,class: "col-sm-2"
+      = text_field_tag "business[city]", nil,class: "header-input col-sm-9"
+    .row.field-section  
+      = label_tag :state, nil,class: "col-sm-2"
+      = text_field_tag "business[state]", nil,class: "header-input col-sm-9"
+    .row.field-section  
+      = label_tag :zip, nil,class: "col-sm-2"
+      = text_field_tag "business[zip]", nil,class: "header-input col-sm-9"
+    .row.field-section  
+      = label_tag :phone, nil,class: "col-sm-2"
+      = text_field_tag "business[phone]", nil,class: "header-input col-sm-9"
+    .row.field-section
+      .col-sm-11 
+        %span
+          = submit_tag :submit
 - if @place && @comparison_result
   / = params["business"]
   / %br
   / = params["business"].values.join(' ')
-  %table 
+  %table.col-sm-12 
     %thead
       %tr
         %th field name 
