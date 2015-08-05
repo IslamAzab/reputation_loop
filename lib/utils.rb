@@ -1,10 +1,14 @@
 class Utils
-  def self.compare_places(place_a, place_b)
-     a = Geocoder.search(place_a[:address]).first
-     b = Geocoder.search(place_b[:address]).first
+  def self.compare_places(business, place)
+    place_a    = {address: business.to_query, phone: business.phone}
+    place_b = {address: "#{place.try(:name)} #{place.try(:formatted_address)} #{place.try(:formatted_phone_number)}",
+                                      phone: Utils.normalize_phone(place.try(:formatted_phone_number))}
 
-     response = {}
-     if b
+    a = Geocoder.search(place_a[:address]).first
+    b = Geocoder.search(place_b[:address]).first
+
+    response = {}
+    if a && b
        response[:street_number] = a.street_number == b.street_number
        response[:street_address] = a.street_address == b.street_address
        response[:postal_code] = a.postal_code == b.postal_code
@@ -12,8 +16,8 @@ class Utils
        response[:state] = a.state == b.state
        response[:city] = a.city == b.city
        response[:phone] = place_a[:phone] == place_b[:phone]
-       response[:matching_count] = response.values.keep_if { |e| e }.count
-     else
+       response[:matching_count] = response.values.select { |e| e }.count
+    else
        response[:street_number] = false
        response[:street_address] = false
        response[:postal_code] = false
@@ -22,17 +26,20 @@ class Utils
        response[:city] = false
        response[:phone] = false
        response[:matching_count] = 0
-     end
+    end
 
-     response
+    response
   end
 
   def self.normalize_phone(phone)
     return "" if phone.nil?
+
+    # should we set country code?
     p = Phoner::Phone.parse(phone, :country_code => '385', :area_code => '47')
     if p
       phone = p.format(:us)
     else
+      # if phoner can't parse normalize it by removing non digits
       phone = phone.gsub(/\D/, '')
     end    
   end

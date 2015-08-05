@@ -4,18 +4,12 @@ class HomeController < ApplicationController
     if params[:business]
       @business = Business.new(business_params) 
       @business.normalize_phone
-      
+
+      # scrap matching place
       searcher = Searcher.new(Searchers::GoogleSearcher)
-
       @place = searcher.place(@business)
-      if @place
-        address_input_from_user    = {address: @business.to_query, phone: @business.phone}
-        address_from_google_places = {address: "#{@place.try(:name)} #{@place.try(:formatted_address)} #{@place.try(:formatted_phone_number)}",
-                                      phone: Utils.normalize_phone(@place.try(:formatted_phone_number))}
-  # byebug
-
-        @comparison_result = Utils.compare_places(address_input_from_user, address_from_google_places)
-      end
+      
+      @comparison_result = Utils.compare_places(@business, @place) if @place
     end
   end
 

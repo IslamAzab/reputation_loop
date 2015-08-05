@@ -26,6 +26,7 @@
       .col-sm-11 
         %span
           = submit_tag :submit
+
 - if @place && @comparison_result
   / = params["business"]
   / %br
@@ -33,8 +34,8 @@
   %table.col-sm-12 
     %thead
       %tr
-        %th field name 
-        %th does it match 
+        %th Field name 
+        %th Does it match 
     %tbody 
       %tr
         %td= @place.name 
