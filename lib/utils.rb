@@ -38,7 +38,7 @@ class Utils
   def self.normalize_phone(phone)
     return "" if phone.nil?
 
-    # should we set country code?
+    # phoner require country code and area code default values
     p = Phoner::Phone.parse(phone, :country_code => '385', :area_code => '47')
     if p
       phone = p.format(:us)
